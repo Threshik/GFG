@@ -1,0 +1,35 @@
+/*class Node of the binary tree
+class Node
+{
+    int data;
+    Node left, right;
+    Node(int key)
+    {
+        data = key;
+        left = right = null;
+    }
+}*/
+class Solution {
+    public boolean find(Node root, int target, ArrayList<Integer> list)
+    {
+        if(root==null)
+        return false;
+        if(root.data==target)
+        return true;
+        
+        boolean l = find(root.left,target,list);
+        boolean r = find(root.right,target,list);
+        
+        if(l||r)
+        list.add(root.data);
+        return l||r;
+    }
+
+    public ArrayList<Integer> Ancestors(Node root, int target) {
+        // add your code here
+        ArrayList<Integer> res = new ArrayList<>();
+        find(root,target,res);
+        return res;
+        
+    }
+}
